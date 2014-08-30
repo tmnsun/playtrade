@@ -1,0 +1,14 @@
+.container
+  ol.breadcrumb
+    li.active Аккаунты
+
+  div style="margin: 20px 0 25px"
+    = link_to 'Добавить аккаунт', new_admin_account_path, class: 'btn btn-info'
+
+  table.table
+    tr
+      th #
+      th Email
+      th Игры
+      th
+    = render @accounts

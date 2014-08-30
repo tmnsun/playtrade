@@ -1,0 +1,11 @@
+tr
+  td
+    | ##{game_counter + 1}
+  td
+    = link_to image_tag(game.cover.thumb), admin_game_path(game)
+  td
+    = link_to game.title, admin_game_path(game)
+  td
+    = link_to 'редактировать', edit_admin_game_path(game)
+    | ,
+    = link_to 'удалить', admin_game_path(game), method: :delete

@@ -1,0 +1,16 @@
+h4
+  = title
+= render @account.deals.by_type(type)
+- if @account.can_sell?(type)
+  .panel.panel-info
+    .panel-heading Выставить на продажу
+    .panel-body
+      = form_tag add_deal_admin_account_path(type: "p#{type}"), method: :post, html: {role: 'form'} do
+        fieldset
+          .form-group
+            = label_tag :price, 'Цена', class: 'col-md-4 control-label'
+            .col-md-4
+              = text_field_tag :price, '', class: "form-control"
+          .form-group
+            .col-md-8
+              = submit_tag 'Выставить на продажу', class: 'btn btn-primary'

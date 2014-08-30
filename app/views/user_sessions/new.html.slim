@@ -1,0 +1,25 @@
+.container
+  .row style='margin-top:20px'
+    .col-xs-12.col-sm-8.col-md-6.col-sm-offset-2.col-md-offset-3
+      = form_tag create_session_path, method: :post, role: 'form'
+        fieldset
+          h2 Вход на сайт
+          - if @login_error
+            .alert.alert-warning role='alert'
+              strong Ошибка!
+              |  Логин или пароль неверные. Попробуйте еще раз, пожалуйста!
+          hr.colorgraph
+          .form-group
+            = text_field_tag :login, '', placeholder: 'Логин', class: 'form-control input-lg'
+          .form-group
+            = password_field_tag :password, '', placeholder: 'Пароль', class: 'form-control input-lg'
+          span.button-checkbox
+            button.btn type='button' data-color='info' Запомнить меня
+            = check_box_tag :remember_me, 1, true, class: 'hidden'
+            / a.btn.btn-link.pull-right href='#' Забыли пароль?
+          hr.colorgraph
+          .row
+            .col-xs-6.col-sm-6.col-md-6
+              = submit_tag 'Вход', class: 'btn btn-lg btn-success btn-block'
+            .col-xs-6.col-sm-6.col-md-6
+              = link_to 'Регистрация', '#', class: 'btn btn-lg btn-primary btn-block'

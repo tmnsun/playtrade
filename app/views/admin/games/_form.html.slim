@@ -1,0 +1,17 @@
+= form_for [:admin, @game], html: { class: 'form-horizontal' } do |f|
+  fieldset
+    .form-group
+      = f.label :cover, 'Обложка', class: 'col-md-4 control-label'
+      .col-md-4
+        - if @game.cover.present?
+          = image_tag @game.cover.thumb, style: 'margin-bottom: 10px;'
+        = f.file_field :cover, class: 'input-file'
+    .form-group
+      = f.label :title, 'Заголовок', class: 'col-md-4 control-label'
+      .col-md-4
+        = f.text_field :title, class: 'form-control input-md', placeholder: 'Название', required: true
+    .form-group
+      label class="col-md-4"
+      .col-md-8
+        = f.submit 'Сохранить', class: 'btn btn-success'
+        = link_to 'Отмена', admin_games_path, class: 'btn btn-info', style: 'margin-left: 15px;'

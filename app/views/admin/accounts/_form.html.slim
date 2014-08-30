@@ -1,0 +1,19 @@
+= form_for [:admin, @account], html: { class: 'form-horizontal' } do |f|
+  fieldset
+    .form-group
+      = f.label :email, 'Почта', class: 'col-md-4 control-label'
+      .col-md-4
+        = f.text_field :email, class: 'form-control input-md', placeholder: 'Почта', required: true
+    .form-group
+      = f.label :email_password, 'Пароль от почты', class: 'col-md-4 control-label'
+      .col-md-4
+        = f.text_field :email_password, class: 'form-control input-md', placeholder: 'Пароль от почты', required: true
+    .form-group
+      = f.label :password, 'Пароль PSN', class: 'col-md-4 control-label'
+      .col-md-4
+        = f.text_field :password, class: 'form-control input-md', placeholder: 'Пароль PSN', required: true
+    .form-group
+      label class="col-md-4"
+      .col-md-8
+        = f.submit 'Сохранить', class: 'btn btn-success'
+        = link_to 'Отмена', admin_accounts_path, class: 'btn btn-info', style: 'margin-left: 15px;'

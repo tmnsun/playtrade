@@ -1,0 +1,6 @@
+.deal class="#{'enabled btn btn-warning' unless deal.disabled? }"
+  | Цена: #{deal.price} руб.
+  - if deal.user
+    | Пользователь: #{deal.user.login}
+  = link_to remove_deal_admin_account_path(@account, deal), method: :delete, data: {confirm: 'Удалить предложение с сайта?'}
+    span.glyphicon.glyphicon-remove

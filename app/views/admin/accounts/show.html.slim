@@ -1,0 +1,36 @@
+.container
+  ol.breadcrumb
+    li
+      = link_to 'Аккаунты', admin_accounts_path
+    li.active #{@account.email}
+
+  h3 #{@account.email}
+  ul
+    li дата создания: #{@account.created_at}
+    - if @account.created_at != @account.updated_at
+      li последнее обновление: #{@account.created_at}
+    li пароль от почты: #{@account.email_password}
+    li пароль PSN: #{@account.password}
+
+  h3 Игры
+  .row style="margin-top: 25px;"
+    = render partial: 'games/game', collection: @account.games
+
+  - if Game.count > @account.games.count
+    .panel.panel-info
+      .panel-heading Добавить игру в аккаунт
+      .panel-body
+        = form_tag add_game_admin_account_path, method: :post, html: {role: 'form'} do
+          fieldset
+            .form-group
+              = label_tag :game_id, 'Игра', class: 'col-md-4 control-label'
+              .col-md-4
+                = select_tag :game_id, options_from_collection_for_select(Game.not_in_account(@account), 'id', 'title'), class: "form-control"
+            .form-group
+              .col-md-8
+                = submit_tag 'Добавить', class: 'btn btn-primary'
+
+  h3 Владельцы
+
+  - (1..3).each do |type|
+    = render partial: 'deals', locals: { title: "П#{type}", type: type }

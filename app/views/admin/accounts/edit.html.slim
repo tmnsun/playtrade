@@ -1,0 +1,7 @@
+.container
+  ol.breadcrumb
+    li
+      = link_to 'Аккаунты', admin_accounts_path
+    li.active Редактирование аккаунта #{@account.email}
+
+  = render 'form'

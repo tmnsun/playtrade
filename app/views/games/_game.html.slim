@@ -1,0 +1,12 @@
+div style="width: 200px; text-align: center; float: left;"
+  article.ps4.case
+    div
+      .img
+        = image_tag 'ps4-topbar-160.png'
+        = image_tag game.cover.thumb
+  = game.title
+  - if defined?(with_prices)
+    ul.prices
+      li П1 - от 300 рублей
+      li П2 - от 500 рублей
+      li П3 - от 900 рублей

@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    title Playtrade
+
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav.navbar.navbar-default role="navigation"
+      .container-fluid
+        - # Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'PlayTrade.ru', root_path, class: 'navbar-brand'
+        - # Collect the nav links, forms, and other content for toggling
+        .collapse.navbar-collapse#bs-example-navbar-collapse-1
+          ul.nav.navbar-nav
+            li.active
+              = link_to 'Главная', root_path
+            li
+              a href="#" Аккаунты
+            li
+              a href="#" Аукцион
+            li
+              a href="#" Игры
+          form.navbar-form.navbar-left role="search"
+            .form-group
+              input.form-control type="text" placeholder="Поиск по названию игры"
+            button.btn.btn-default type="submit" Искать
+          ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              - if current_user.admin?
+                  li
+                    = link_to 'Админка', admin_games_path
+              li class="dropdown"
+                a.dropdown-toggle href="#" data-toggle="dropdown"
+                  | Меню
+                  span.caret
+                ul.dropdown-menu role="menu"
+                  li
+                    a href="#" Профиль
+                  li
+                    a href="#" Личные сообщения
+                  li
+                    a href="#" Настройки
+                  li.divider
+                  li
+                    = link_to 'Выйти', destroy_session_path
+            - else
+              li
+                = link_to 'Войти', new_session_path
+    = yield

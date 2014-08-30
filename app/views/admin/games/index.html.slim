@@ -1,0 +1,9 @@
+.container
+  ol.breadcrumb
+    li.active Игры
+
+  div style="margin: 20px 0 25px"
+    = link_to 'Добавить игру', new_admin_game_path, class: 'btn btn-info'
+
+  table.table
+    = render @games

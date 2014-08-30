@@ -1,0 +1,13 @@
+tr
+  td
+    | ##{account_counter + 1}
+  td
+    = account.email
+  td
+    = account.games.pluck(:title).join(', ')
+  td
+    = link_to 'посмотреть', admin_account_path(account)
+    | ,
+    = link_to 'редактировать', edit_admin_account_path(account)
+    | ,
+    = link_to 'удалить', admin_account_path(account), method: :delete

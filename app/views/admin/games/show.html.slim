@@ -1,0 +1,17 @@
+.container
+  ol.breadcrumb
+    li
+      = link_to 'Игры', admin_games_path
+    li.active
+      = @game.title
+
+  = render partial: 'games/game', locals: {game: @game}
+  ul.game-info
+    li Дата добавления: #{@game.created_at}
+    li Последнее обновление: #{@game.updated_at}
+  = link_to 'редактировать', edit_admin_game_path(@game)
+
+.container
+  h3 Аккаунты с игрой
+  table.table
+    = render @game.accounts
