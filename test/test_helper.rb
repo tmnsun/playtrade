@@ -1,5 +1,13 @@
 require 'simplecov'
-SimpleCov.start 'rails' unless ENV['GUARD_NOTIFY']
+require 'codeclimate-test-reporter'
+if ENV['GUARD_NOTIFY'].blank?
+  SimpleCov.start 'rails' do
+    formatter SimpleCov::Formatter::MultiFormatter[
+      SimpleCov::Formatter::HTMLFormatter,
+      CodeClimate::TestReporter::Formatter
+    ]
+  end
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)

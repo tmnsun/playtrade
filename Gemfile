@@ -53,6 +53,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter'
 end
 
 gem 'bower-rails'

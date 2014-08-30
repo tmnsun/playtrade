@@ -60,6 +60,8 @@ GEM
       mongoid-grid_fs (>= 1.3, < 3.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    codeclimate-test-reporter (0.4.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -271,6 +273,7 @@ DEPENDENCIES
   capybara
   carrierwave
   carrierwave-mongoid
+  codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails
