@@ -1,5 +1,6 @@
 require 'simplecov'
 require 'codeclimate-test-reporter'
+ENV['CODECLIMATE_REPO_TOKEN'] = Rails.application.secrets.codeclimate_repo_token
 if ENV['GUARD_NOTIFY'].blank?
   SimpleCov.start 'rails' do
     formatter SimpleCov::Formatter::MultiFormatter[
