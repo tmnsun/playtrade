@@ -51,6 +51,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'faker'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter'

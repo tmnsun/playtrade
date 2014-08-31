@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 describe Admin::GamesController do
   it 'must redirect to root if user is not admin' do

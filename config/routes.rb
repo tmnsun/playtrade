@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get :destroy, as: :destroy_session
   end
 
+  get :registration, to: 'users#new', as: :registration
+  post :registration, to: 'users#create', as: :register
+
   namespace :admin do
     resources :games
     resources :accounts do
