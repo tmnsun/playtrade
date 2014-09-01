@@ -9,5 +9,10 @@ FactoryGirl.define do
     factory :admin_user do
       admin true
     end
+    factory :rich_user do
+      after(:create) do |user|
+        user.payments.create(value: 3000)
+      end
+    end
   end
 end

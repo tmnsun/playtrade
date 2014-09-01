@@ -18,10 +18,6 @@ describe Deal do
     build(:deal, account: nil).must_be :invalid?
   end
 
-  # it 'is not valid without a user' do
-  #   build(:deal, user: nil).must_be :invalid?
-  # end
-
   it 'must be enabled by default' do
     refute(build(:deal).disabled)
   end
@@ -33,7 +29,7 @@ describe Deal do
     refute deal.enabled? == deal.disabled?
   end
 
-  it 'cant be disabled without user' do
+  it 'can\'t be disabled without user' do
     build(:deal, user: nil, disabled: true).must_be :invalid?
   end
 
@@ -44,7 +40,7 @@ describe Deal do
   end
 
   it 'can\'t be destroyed with user' do
-    deal = create(:deal)
+    deal = create(:deal, user: create(:rich_user))
     deal.destroy
     refute deal.destroyed?
   end
@@ -61,13 +57,13 @@ describe Deal do
 
   it 'is not valid if there is enabled deal with same account and type' do
     account = create(:account)
-    create(:p2_deal, user: create(:user), account: account, created_at: 5.minutes.ago)
-    second_deal = build(:p2_deal, user: create(:user), account: account)
+    create(:p2_deal, user: create(:rich_user), account: account, created_at: 5.minutes.ago)
+    second_deal = build(:p2_deal, user: create(:rich_user), account: account)
     second_deal.must_be :invalid?
   end
 
   it 'is not valid if there is previous deal with same user and type' do
-    user = create(:user)
+    user = create(:rich_user)
     account = create(:account)
 
     # first deal
@@ -82,8 +78,8 @@ describe 'deals list' do
   before :each do
     account = create(:account)
 
-    @first_deal = create(:p3_deal, account: account, disabled: true, created_at: 10.minutes.ago)
-    @second_deal = create(:p3_deal, account: account, disabled: true, created_at: 5.minutes.ago)
+    @first_deal = create(:p3_deal, account: account, disabled: true, created_at: 10.minutes.ago, user: create(:rich_user))
+    @second_deal = create(:p3_deal, account: account, disabled: true, created_at: 5.minutes.ago, user: create(:rich_user))
     @third_deal = create(:p3_deal, account: account)
   end
 

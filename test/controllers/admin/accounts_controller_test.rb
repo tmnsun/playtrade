@@ -84,7 +84,7 @@ describe Admin::AccountsController do
 
   it 'should not remove deal with user' do
     account = create(:account)
-    deal = create(:deal, type: :p2, account: account)
+    deal = create(:deal, type: :p2, account: account, user: create(:rich_user))
     deals_count = account.deals.count
     post :remove_deal, id: account.id, deal_id: deal.id
     assert_equal(deals_count, account.reload.deals.count)

@@ -16,12 +16,22 @@ class Account
   end
 
   def can_sell?(type)
-    return false unless [1, 2, 3].include?(type)
-    last_deal = deals.by_type(type).last
-    last_deal.nil? || last_deal.disabled?
+    deal = last_deal(type)
+    deal.nil? || deal.disabled?
   end
 
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, presence: true, uniqueness: true
-  validates :email_password, presence: true
-  validates :password, presence: true
+  def last_deal(type)
+    type = type.to_i
+    return nil unless correct_deal_type(type)
+    deals.by_type(type).last
+  end
+
+  validates :email, email: true, uniqueness: true
+  validates_presence_of :email, :email_password, :password
+
+  protected
+
+  def correct_deal_type(type)
+    [1, 2, 3].include?(type)
+  end
 end

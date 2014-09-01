@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :accounts do
+    member do
+      get 'buy/:type', to: :buy, as: :buy
+    end
+  end
   resources :games
 
   # The priority is based upon order of creation: first created -> highest priority.

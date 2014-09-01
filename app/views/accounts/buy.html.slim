@@ -1,0 +1,8 @@
+.container
+  .page-header
+    h1
+      | Покупка аккаунта
+  .row style="margin-top: 25px;"
+    = render @account
+  h2 Покупка аккаунта П#{params[:type]}
+  p Цена: #{@deal.price}

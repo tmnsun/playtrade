@@ -12,10 +12,9 @@ class Deal
 
   as_enum :type, p1: 1, p2: 2, p3: 3
 
-  validates :type, presence: true
-  validates :account, presence: true
-  # validates :user, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+
+  validates_presence_of :type, :account, :price
 
   before_validation :check_prev_user
   before_validation :check_prev_enabled

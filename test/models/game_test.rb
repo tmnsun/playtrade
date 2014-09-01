@@ -56,7 +56,7 @@ describe 'not in account' do
 
   it 'should return 1 and 3 game' do
     @account.games << @game2
-    assert_equal(Game.not_in_account(@account).to_a, [@game1, @game3])
+    assert_equal(Game.not_in_account(@account).order_by(:title.asc).to_a, [@game1, @game3])
   end
 
   it 'should return empty array' do

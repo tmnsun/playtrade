@@ -37,8 +37,8 @@ describe Account do
 
   it 'can sell if there is disabled deals' do
     account = create(:account)
-    create(:deal, type: :p1, account: account, disabled: true)
-    create(:deal, type: :p1, account: account, disabled: true)
+    create(:deal, type: :p1, account: account, disabled: true, user: create(:rich_user))
+    create(:deal, type: :p1, account: account, disabled: true, user: create(:rich_user))
     assert account.can_sell?(1)
   end
 

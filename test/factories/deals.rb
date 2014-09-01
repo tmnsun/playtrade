@@ -5,7 +5,6 @@ FactoryGirl.define do
     type { rand(1..3) }
     price { rand(100..1000) }
     account { association(:account) }
-    user { association(:user) }
 
     factory(:p1_deal) do
       type 1

@@ -61,3 +61,48 @@ describe User do
     user.errors.must_include(:login)
   end
 end
+
+describe 'user balance and payments' do
+  before do
+    @user = create(:user)
+  end
+
+  it 'should have zero balance' do
+    assert_equal 0, @user.balance
+  end
+
+  it 'should have balance = 100' do
+    @user.payments.create(value: 15)
+    @user.payments.create(value: 85)
+    assert_equal 100, @user.balance
+  end
+
+  it 'cant buy account without necessary balance amount' do
+    account = create(:account)
+    deal = create(:deal, account: account, type: 3, price: 1000)
+    deals_count = @user.deals.count
+    assert_raises InsufficientFunds do
+      @user.deals << deal
+    end
+    assert_equal deals_count, @user.reload.deals.count
+  end
+
+  it 'should buy account' do
+    account = create(:account)
+    deal = create(:deal, account: account, type: 3, price: 1000)
+    @user.payments.create(value: 700)
+    @user.payments.create(value: 315)
+    @user.deals << deal
+    assert_equal @user.balance, 15
+  end
+
+  it 'cant remove deal after buy' do
+    account = create(:account)
+    deal = create(:deal, account: account, type: 3, price: 1000)
+    @user.payments.create(value: 1000)
+    @user.deals << deal
+    assert_raises CantRemoveDealFromUser do
+      @user.deals.delete(deal)
+    end
+  end
+end
