@@ -3,8 +3,7 @@ class User
   include Mongoid::Document
   authenticates_with_sorcery!
 
-  field :email, type: String
-  field :login, type: String
+  # login and email fields set in sorcery
   field :admin, type: Boolean, default: false
 
   embeds_many :payments do
