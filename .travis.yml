@@ -1,7 +1,13 @@
 language: ruby
 rvm:
-  - 2.1.1
+- 2.1.1
 env:
-  SECRET_KEY_BASE="$(bundle exec rake secret)"
+  matrix:
+  - SECRET_KEY_BASE="$(bundle exec rake secret)"
+  global:
+    secure: dPj3uIL9HlJzA0pA8J+xHnihONYeC66sGns158hCg0EN7MTirpr1i3fNbSf9wX1xBtAz9RA+Zit7IRT+5LCP8a/I7v9BI6PPTxmtJdmTuKQOBLXHHDDj8woBO0UcVRGUXhuSdCF5w0iw8aEsC7/cbaHoDnOIQTXtzFcrEELZebU=
 services:
-  - mongodb
+- mongodb
+after_success:
+  - "openssl aes-256-cbc -k '$DEPLOY_KEY' -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa"
+  - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap deploy"

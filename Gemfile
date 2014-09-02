@@ -73,6 +73,12 @@ gem 'carrierwave'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 
+gem 'puma'
+
+gem 'capistrano-rbenv', '~> 2.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
