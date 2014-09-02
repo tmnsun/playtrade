@@ -39,6 +39,8 @@ end
 
 gem 'minitest-rails'
 
+gem 'dotenv-deployment'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
