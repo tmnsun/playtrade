@@ -40,6 +40,7 @@ end
 gem 'minitest-rails'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
