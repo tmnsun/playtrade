@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  before_filter :require_login
   before_filter :find_account, only: [:buy, :checkout]
   before_filter :find_last_deal, only: [:buy, :checkout]
 

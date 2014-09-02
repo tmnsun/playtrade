@@ -24,16 +24,16 @@ html
         - # Collect the nav links, forms, and other content for toggling
         .collapse.navbar-collapse#bs-example-navbar-collapse-1
           ul.nav.navbar-nav
-            li.active
+            li class="#{'active' if params[:controller] == 'index'}"
               = link_to 'Главная', root_path
-            li
-              a href="#" Аукцион
-            li
-              a href="#" Игры
-          form.navbar-form.navbar-left role="search"
-            .form-group
-              input.form-control type="text" placeholder="Поиск по названию игры"
-            button.btn.btn-default type="submit" Искать
+          /   li
+          /     a href="#" Аукцион
+          /   li
+          /     a href="#" Игры
+          / form.navbar-form.navbar-left role="search"
+          /   .form-group
+          /     input.form-control type="text" placeholder="Поиск по названию игры"
+          /   button.btn.btn-default type="submit" Искать
           ul.nav.navbar-nav.navbar-right
             - if logged_in?
               - if current_user.admin?
@@ -54,8 +54,8 @@ html
                   li
                     = link_to 'Выйти', destroy_session_path
             - else
-              li
+              li class="#{'active' if params[:controller] == 'user_sessions'}"
                 = link_to 'Войти', new_session_path
-              li
+              li class="#{'active' if params[:controller] == 'users' && params[:action] == 'new'}"
                 = link_to 'Зарегистрироваться', registration_path
     = yield
