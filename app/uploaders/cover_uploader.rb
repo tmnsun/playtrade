@@ -18,7 +18,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "cover.png"].compact.join('_'))
+    "fallback/" + [version_name, "cover.png"].compact.join('_')
   end
 
   def extension_white_list
