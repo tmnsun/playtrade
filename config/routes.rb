@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :accounts do
       member do
         post :add_game
-        post 'add_deal/:type', to: :add_deal, as: :add_deal
+        post 'add_deal/:type', action: :add_deal, as: :add_deal
         delete 'remove_deal/:deal_id', action: :remove_deal, as: :remove_deal
       end
     end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :accounts do
     member do
-      get 'buy/:type', to: :buy, as: :buy
+      get 'buy/:type', action: :buy, as: :buy
     end
   end
   resources :games

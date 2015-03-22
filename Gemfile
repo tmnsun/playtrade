@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 
@@ -26,9 +26,9 @@ gem 'spring',        group: :development
 gem 'mongoid'
 gem 'mongoid-grid_fs'
 
-gem 'bson_ext'
-
 gem 'simple_enum', '~> 2.0.0' , require: 'simple_enum/mongoid'
+
+gem 'bson_ext'
 
 group :development do
   gem 'guard'
@@ -40,6 +40,7 @@ end
 gem 'minitest-rails'
 
 group :development, :test do
+  gem 'ruby_gntp'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rescue'
@@ -74,20 +75,3 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick'
 
 gem 'puma'
-
-gem 'capistrano-rbenv', '~> 2.0'
-gem 'capistrano-rails', '~> 1.1'
-gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
